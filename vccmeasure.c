@@ -44,7 +44,9 @@ uint8_t getVcc()
     return (uint8_t) (0xff & v);
 }
 
-/* returns vcc rating all input values *10, returns percentage */
+/* returns vcc rating in percent based on a nominal voltage and a limit for the undervoltage
+ * all input values are *10
+ * returned percentage is *1 */
 uint8_t getVccRating(uint8_t nominal, uint8_t undervoltage)
 {
     uint16_t vcc, uv, rating, nom, range;
