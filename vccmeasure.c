@@ -13,6 +13,10 @@
   VCC=1024*1.1/ADC;
   
   cpldcpu@gmail.com - Nov 23, 2013
+  
+  s-koch@gmx.net - Feb 3, 206
+  - Added VCC Rating function to return battery percentage
+
 */
 
 uint16_t getVccADCRaw(void)
