@@ -4,6 +4,7 @@
 #include "dbg_putchar.h"
 #include "printf.h"
 #include "dht11.h"
+#include "vccmeasure.h"
 
 #define TINUDHT_PIN PB3
 
@@ -34,11 +35,13 @@ int main(int argc, char *argv[])
         ret = tinudht_read(&tinudht, TINUDHT_PIN);
 
         if (ret == TINUDHT_OK) {
-            tfp_printf("T=%d H=%d \n\r", 
+            tfp_printf("T=%d H=%d BAT=%d BAT=%d%%\n\r", 
                     tinudht.temperature,
-                    tinudht.humidity);
+                    tinudht.humidity,
+                    getVcc(),
+                    getVccRating(50, 45));
         } else {
-            tfp_printf("ret = %d dbg=%d\n\r", ret, tinudht.dbg);
+            tfp_printf("ret = %d   dbg = %d\n\r", ret, tinudht.dbg);
         }
 
         sleep(4000);
